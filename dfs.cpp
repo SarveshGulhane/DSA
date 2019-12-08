@@ -1,66 +1,60 @@
-#include<iostream> 
-#include<list> 
-using namespace std; 
+#include<iostream>
+using namespace std;
 
-class Graph 
-{ 
-    int V;
-    list<int> *adj; 
-  
-    void DFSUtil(int v, bool visited[]);
+void dfs(int** edges, int n, int sv, bool*vis)
+{
+     cout<<sv<<endl;
+     vis[sv]=true;
 
-    public: 
-    Graph(int V);   
-    void addEdge(int v, int w); 
-  
-    void DFS(int v); 
-}; 
-  
-Graph::Graph(int V) 
-{ 
-    this->V = V; 
-    adj = new list<int>[V]; 
-} 
-  
-void Graph::addEdge(int v, int w) 
-{ 
-    adj[v].push_back(w);
-} 
-  
-void Graph::DFSUtil(int v, bool visited[]) 
-{ 
+     for(int i=0;i<n;i++)
+     {
+          if(i==sv)
+               continue;
 
-    visited[v] = true; 
-    cout << v << " "; 
+          if(edges[sv][i]==1)
+          {
+               if(vis[i])
+                    continue;
+               
+               dfs(edges,n,i,vis);
+          }
+     }
+}
 
-    list<int>::iterator i; 
-    for (i = adj[v].begin(); i != adj[v].end(); ++i) 
-        if (!visited[*i]) 
-            DFSUtil(*i, visited); 
-} 
-  
-void Graph::DFS(int v) 
-{ 
-    bool *visited = new bool[V]; 
-    for (int i = 0; i < V; i++) 
-        visited[i] = false; 
+int main()
+{
+     int v,e,i,j,n,sv;
+     cout<<"Enter no. of vertices and Edges:\n";
+     cin>>v>>e;
 
-    DFSUtil(v, visited); 
-} 
-  
-int main() 
-{ 
-    Graph g(4); 
-    g.addEdge(0, 1); 
-    g.addEdge(0, 2); 
-    g.addEdge(1, 2); 
-    g.addEdge(2, 0); 
-    g.addEdge(2, 3); 
-    g.addEdge(3, 3); 
-  
-    cout << "Following is Depth First Traversal"
-            " (starting from vertex 2) \n"; 
-    g.DFS(2); 
-  
-    return 0; 
-} 
+     cout<<"Enter Edges:\n";
+     int** edges=new int*[n];
+     for(i=0;i<n;i++)
+     {
+          edges[i]=new int[n];
+          for(j=0;j<n;j++)
+          {
+               edges[i][j]=0;
+          }
+     }
+
+     for(i=0;i<e;i++)
+     {
+          int f,s;
+          cin>>f>>s;
+          edges[f][s]=1;
+          edges[s][f]=1;
+     }
+
+     bool* vis=new bool[n];
+     for(i=0;i<n;i++)
+          vis[i]=false;
+
+     cout<<"Enter starting vertex:\n";
+     cin>>sv;
+
+     cout<<"DFS:\n";
+     dfs(edges,n,sv,vis);
+
+     return 0;
+}

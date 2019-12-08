@@ -1,13 +1,11 @@
-#include <bits/stdc++.h> 
+#include<iostream> 
 using namespace std; 
   
- 
+#define INT_MAX 2147483647
 #define V 5  
   
-
 int minKey(int key[], bool mstSet[])  
 {  
-
     int min = INT_MAX, min_index;  
   
     for (int v = 0; v < V; v++)  
@@ -17,7 +15,6 @@ int minKey(int key[], bool mstSet[])
     return min_index;  
 }  
   
-
 void printMST(int parent[], int graph[V][V])  
 {  
     cout<<"Edge \tWeight\n";  
@@ -25,7 +22,6 @@ void printMST(int parent[], int graph[V][V])
         cout<<parent[i]<<" - "<<i<<" \t"<<graph[i][parent[i]]<<" \n";  
 }  
   
-
 void primMST(int graph[V][V])  
 {  
 

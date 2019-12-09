@@ -31,7 +31,6 @@ void reverse()
      while(str1[i]!='\0')
 	{
 		len++;
-          i++;
 	}
 
 	ptr1=str1;

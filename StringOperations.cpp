@@ -3,12 +3,12 @@ using namespace std;
 
 void length()
 {
-     char* str1=new char[100];
-
+     char *ptr1,str1[100];
+     int len=0;
+     
      cout<<"Enter String: ";
      cin>>str1;
-     char *ptr1;
-     int len=0;
+     
      ptr1=str1;
 
      while(*ptr1!='\0')
@@ -22,12 +22,11 @@ void length()
 
 void reverse()
 {
-     char* str1=new char[100];
+     char str1[100],*ptr1, *ptr2, temp, i=0;
+	int len=0;
 
      cout<<"Enter String: ";
      cin>>str1;
-     char *ptr1, *ptr2, temp, i=0;
-	int len=0;
 
      while(str1[i]!='\0')
 	{
@@ -55,13 +54,12 @@ void reverse()
 
 void copy()
 {
-     char* str1=new char[100];
+     char str1[100],str2[100],*ptr1, *ptr2;
+     int len=0;
 
      cout<<"Enter String: ";
      cin>>str1;
-     char* str2=new char[100];
-     char *ptr1, *ptr2;
-     int len=0;
+
      ptr1=str1;
 
      while(*ptr1!='\0')
@@ -80,52 +78,48 @@ void copy()
           ptr1++;
           ptr2++;
      }
-     
      *ptr2='\0';
+
      cout<<"copied str: "<<str2<<endl;
 }
 
 void concat()
 {
-     	char* str1=new char[100];
+     char str1[100],str2[100],*ptr1,*ptr2;
 
      cout<<"Enter String: ";
      cin>>str1;
-          char *ptr1,*ptr2;
-          char* str2=new char[100];
 
-          cout<<"Enter 2nd String: ";
-          cin>>str2;
+     cout<<"Enter 2nd String: ";
+     cin>>str2;
 
-          int len=0;
-          ptr1=str1;
-          ptr2=str2;
+     int len=0;
+     ptr1=str1;
+     ptr2=str2;
 
-          while(*ptr1!='\0')
-          {
-               len++;
-               ptr1++;
-          }
+     while(*ptr1!='\0')
+     {
+          len++;
+          ptr1++;
+     }
 		 
-		while(*ptr2!='\0')
-		{
-		     *ptr1=*ptr2;
-		 	ptr1++;ptr2++;
-		}
+	while(*ptr2!='\0')
+	{
+		*ptr1=*ptr2;
+		ptr1++;ptr2++;
+	}
 		 
-		*ptr1='\0';
-		cout<<"concat: "<<str1<<endl;
+	*ptr1='\0';
+	cout<<"concat: "<<str1<<endl;
 }
 
 void comp()
 {
-	char* str1=new char[100];
+	char str1[100],str2[100],*ptr1,*ptr2;
+     int len1=0,len2=0;
 
      cout<<"Enter String: ";
      cin>>str1;
-     int len1=0,len2=0;
-	char *ptr1,*ptr2;
-	char* str2=new char[100];
 
      cout<<"Enter 2nd String: ";
      cin>>str2;
@@ -133,21 +127,20 @@ void comp()
      ptr1=str1;
      ptr2=str2;
      
-     
-     	while(*ptr1!='\0')
+     while(*ptr1!='\0')
+     {
+     	if(*ptr1==*ptr2)
      	{
-     		if(*ptr1==*ptr2)
-     		{
-     			ptr1++;ptr2++;
-                    len1++;len2++;
-     		}
-     		else
-               {
-     			len1++;
-                    cout<<"Not Equal\n";
-                    break;
-               }
+     		ptr1++;ptr2++;
+               len1++;len2++;
      	}
+     	else
+          {
+     		len1++;
+               cout<<"Not Equal\n";
+               break;
+          }
+     }
      if(len1==len2)
           cout<<"Equal\n";
 }
@@ -163,26 +156,21 @@ int main()
 
           switch (op)
           {
-          case 1:
-     	 	length();
-          break;
+               case 1:length();
+               break;
      
-          case 2:
-               reverse();
-          break;
+               case 2:reverse();
+               break;
 
-          case 3:
-               copy();
-          break;
+               case 3:copy();
+               break;
 
-          case 4:
-               concat();
-	  	break;
+               case 4:concat();
+ 	       break;
           
-          case 5:
-          	comp();
-          break;
-		}
+               case 5:comp();
+               break;
+	 }
 		
           cout<<"\n";  
      };

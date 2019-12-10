@@ -60,15 +60,6 @@ void copy()
      cin>>str1;
 
      ptr1=str1;
-
-     while(*ptr1!='\0')
-     {
-          len++;
-          ptr1++;
-     }
-
-     int i=0;
-     ptr1=str1;
      ptr2=str2;
 
      while(*ptr1!='\0')
@@ -165,11 +156,11 @@ int main()
                break;
 
                case 4:concat();
- 	       break;
+	       break;
           
                case 5:comp();
                break;
-	 }
+		}
 		
           cout<<"\n";  
      };

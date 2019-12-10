@@ -3,7 +3,7 @@ using namespace std;
 
 class pizza
 {
-     int front,rear,n,q[];
+     int front,rear,n=0,q[20];
         
 	public:
      pizza()
@@ -14,7 +14,7 @@ class pizza
  
      int isfull()
      {
-          if((front==0&&rear==n)||front==rear+1)
+          if((front==0&&rear==n-1)||front==rear+1)
   		     return 1;
           else
    		     return 0;
@@ -30,14 +30,17 @@ class pizza
  
      void add()
      {
-  	     char c;
+		int x;
 		cout<<"enter no. of Orders:";
-		cin>>n;
+		cin>>x;
+		n=n+x;
+
 		for(int i=0;i<n;i++)
-		{		
+		{	
 			if(isfull()==0)
   	     	{
-  	 	     	cout<<"\n Enter the Pizza ID: ";
+  	 	     	
+				cout<<"\n Enter the Pizza ID: ";
   	 	     	if(front==-1&&rear==-1)
   	 	     	{
   	  		     	front=0;
@@ -53,6 +56,7 @@ class pizza
   	     	else
   	     	{
   		 	     cout<<"\n Orders are full ";
+				break;
 	  	     }
 		}
      }

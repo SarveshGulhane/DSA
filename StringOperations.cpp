@@ -54,7 +54,6 @@ void reverse()
 void copy()
 {
      char str1[100],str2[100],*ptr1, *ptr2;
-     int len=0;
 
      cout<<"Enter String: ";
      cin>>str1;
@@ -83,13 +82,11 @@ void concat()
      cout<<"Enter 2nd String: ";
      cin>>str2;
 
-     int len=0;
      ptr1=str1;
      ptr2=str2;
 
      while(*ptr1!='\0')
      {
-          len++;
           ptr1++;
      }
 		 
@@ -105,7 +102,7 @@ void concat()
 
 void comp()
 {
-	char str1[100],str2[100],*ptr1,*ptr2;
+     char str1[100],str2[100],*ptr1,*ptr2;
      int len1=0,len2=0;
 
      cout<<"Enter String: ";

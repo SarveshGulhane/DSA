@@ -4,36 +4,8 @@ using namespace std;
 struct node
 {
 	char data;
-	struct node *left;
-	struct node *right;
+	struct node *left,*right;
 };
-
-void Preorder(struct node *root)
-{
-	if(root == NULL) return;
-
-	printf("%d ",root->data); 
-	Preorder(root->left);     
-	Preorder(root->right);    
-}
-
-void Inorder(node *root)
-{
-	if(root == NULL) return;
-
-	Inorder(root->left);       
-	printf("%d ",root->data);  
-	Inorder(root->right);      
-}
-
-void Postorder(node *root)
-{
-	if(root == NULL) return;
-
-	Postorder(root->left);   
-	Postorder(root->right);   
-	printf("%d ",root->data); 
-}
 
 node* Insert(node *root,int data)
 {
@@ -124,43 +96,32 @@ node* deleteNode(node* root, int num1)
             	return temp; 
         	} 
         	node* temp = minValueNode(root->right); 
-        	root->data = temp->data;
+        	root->data = temp->data; 
         	root->right = deleteNode(root->right, temp->data); 
     	} 
     	return root; 
 }
- 
+
 int main()
 {
 	node* root = NULL;
-     int keys[10],num;
+     int keys[10],num,i;
 
      cout<<"Enter keys:\n";
-     for(int i=0;i<10;i++)
+     for(i=0;i<10;i++)
      {
           cin>>keys[i];
      }
 
-	for (int k=0;k<10;k++)
+	for (i=0;i<10;i++)
      {
-		root = Insert(root, keys[k]);
+		root = Insert(root, keys[i]);
      }
-
-	cout<<"Preorder: ";
-	Preorder(root);
-	cout<<"\n";
 	
-	cout<<"Inorder: ";
-	Inorder(root);
-	cout<<"\n";
-	
-	cout<<"Postorder: ";
-	Postorder(root);
-	cout<<"\n";
-
-     cout<<"Level viz:\n"<<endl;
+	cout<<"Level viz:\n"<<endl;
 	printLevelOrder(root);
 
+	
 	cout<<"\nEnter the element you want to search in the binary search tree\n";
     	cin>>num;
     	node* a=NULL;
@@ -170,11 +131,11 @@ int main()
     	else
         	cout<<"The element was not found\n";
 
+	
 	cout<<"\nEnter the data you want to delete: ";
     	cin>>num;
     	root=deleteNode(root,num);
     	printLevelOrder(root);
 
-     return 0;
-
+    	return 0;
 }

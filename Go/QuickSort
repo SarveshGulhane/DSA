@@ -1,0 +1,42 @@
+package main
+
+import (
+	"fmt"
+)
+
+func partition(arr []int, low int, high int) int {
+	i := low - 1
+	pivot := arr[high]
+
+	for j := low; j <= high-1; j++ {
+		if arr[j] < pivot {
+			i++
+			arr[i], arr[j] = arr[j], arr[i]
+		}
+	}
+	arr[i+1], arr[high] = arr[high], arr[i+1]
+	return i + 1
+}
+
+func quickSort(arr []int, low int, high int) {
+	if low < high {
+		index := partition(arr, low, high)
+
+		quickSort(arr, low, index-1)
+		quickSort(arr, index+1, high)
+	}
+}
+
+func printSorted(arr []int) {
+	for i := 0; i < len(arr); i++ {
+		fmt.Printf("%d\t", arr[i])
+	}
+	fmt.Println()
+}
+
+func main() {
+	arr := []int{17, 55, 7, 28, 30, 3}
+
+	quickSort(arr, 0, len(arr)-1)
+	printSorted(arr)
+}

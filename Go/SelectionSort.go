@@ -13,9 +13,7 @@ func selectionSort(arr []int) {
 				minIndex = j
 			}
 		}
-		temp := arr[minIndex]
-		arr[minIndex] = arr[i]
-		arr[i] = temp
+		arr[minIndex], arr[i] = arr[i], arr[minIndex]
 	}
 
 }
